@@ -24,35 +24,34 @@ export const InputForm = () => {
       <DefaultButton>Button</DefaultButton>
       <Stack horizontal tokens={stackTokens} styles={stackStyles}>
         <Stack {...columnProps}>
-          <TextField label="Standard" />
-          <TextField label="Disabled" disabled defaultValue="I am disabled" />
-          <TextField label="Read-only" readOnly defaultValue="I am read-only" />
-          <TextField label="Required " required />
-          <TextField ariaLabel="Required without visible label" required />
-          <TextField label="With error message" errorMessage="Error message" />
+          <TextField
+            placeholder="please enter a query"
+            label="Required "
+            required
+            onChange={(e) => setTitle(e.target.value)}
+          />
         </Stack>
         <Stack {...columnProps}>
-          <MaskedTextField
-            label="With input mask"
-            mask="m\ask: (999) 999 - 9999"
-            title="A 10 digit number"
-          />
-          <TextField label="With an icon" iconProps={iconProps} />
-          <TextField
-            label="With placeholder"
-            placeholder="Please enter text here"
-          />
-          <TextField
-            label="Disabled with placeholder"
-            disabled
-            placeholder="I am disabled"
-          />
-          <TextField
-            label="Password with reveal button"
-            type="password"
-            canRevealPassword
-            revealPasswordAriaLabel="Show password"
-          />
+          <DefaultButton
+            onClick={async () => {
+              const query = { title };
+              const response = await fetch("http://localhost:5000/input", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(query),
+              });
+
+              console.log(query.title);
+
+              if (response.ok) {
+                console.log("response worked!");
+              }
+            }}
+          >
+            submit
+          </DefaultButton>
         </Stack>
       </Stack>
     </div>
