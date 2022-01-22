@@ -1,9 +1,18 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
+from pymongo import MongoClient
+import certifi
+
 app = Flask(__name__)
+
+ca = certifi.where()
+
+client=MongoClient("mongodb+srv://paulhinta:cP3&bG32@cluster0.xov9o.mongodb.net/Queries?retryWrites=true&w=majority", tlsCAFile=ca)
+db = client.Queries
 
 app.config['CORS_HEADERS'] = 'Content-Type'
 
+#test
 query_params = "No live query"
 
 def dummy_alg():
@@ -38,7 +47,9 @@ def helloWorld():
 @app.route("/input", methods=['POST'])
 @cross_origin()
 def input():
-  print(request.get_json())
+  x=request.get_json()
+  res = db.Example.insert_one(x)
+  print(x)
   return query_params
 
 if __name__ == "__main__":
