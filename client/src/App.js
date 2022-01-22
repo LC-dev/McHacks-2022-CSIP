@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Deploy } from "./Component/Deploy/Deploy";
+import { InputForm } from "./Component/InputForm";
 
 function App() {
+  useEffect(() => {
+    document.title = "Covid stringency index predictor";
+  }, []);
+
   const [data, setData] = useState([]);
   const getData = () => {
     fetch("http://localhost:5000/output", {
@@ -30,6 +35,7 @@ function App() {
         data.output.map((output, i) => <p key={i}>{output}</p>)
       )}
       <Deploy />
+      <InputForm></InputForm>
     </div>
   );
 }
