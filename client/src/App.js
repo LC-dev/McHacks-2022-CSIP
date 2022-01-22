@@ -4,7 +4,7 @@ import { Deploy } from "./Component/Deploy/Deploy";
 function App() {
   const [data, setData] = useState([]);
   const getData = () => {
-    fetch("http://localhost:5000/members", {
+    fetch("http://localhost:5000/output", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -24,10 +24,10 @@ function App() {
   }, []);
   return (
     <div>
-      {typeof data.members === "undefined" ? (
+      {typeof data.output === "undefined" ? (
         <p>Loading...</p>
       ) : (
-        data.members.map((member, i) => <p key={i}>{member}</p>)
+        data.output.map((output, i) => <p key={i}>{output}</p>)
       )}
       <Deploy />
     </div>
