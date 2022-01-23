@@ -109,21 +109,21 @@ export const InputForm = () => {
             }}
           />
           <Slider
-            label="Estimate the number of cases:"
+            label="Number of cases:"
             min={0}
-            max={100000}
-            step={100}
-            defaultValue={10000}
+            max={1500000}
+            step={1000}
+            defaultValue={800}
             showValue
             snapToStep
             onChange={casesOnChange}
           />
           <Slider
-            label="Estimate the number of deaths:"
+            label="Number of deaths:"
             min={0}
-            max={10000}
-            step={100}
-            defaultValue={5000}
+            max={5000}
+            step={10}
+            defaultValue={100}
             showValue
             snapToStep
             onChange={deathsOnChange}
@@ -131,9 +131,9 @@ export const InputForm = () => {
           <Slider
             label="Estimate the reproduction rate:"
             min={0}
-            max={3}
+            max={4}
             step={0.1}
-            defaultValue={0.8}
+            defaultValue={1.1}
             showValue
             snapToStep
             onChange={reproductionOnChange}
@@ -149,27 +149,26 @@ export const InputForm = () => {
             onChange={positiveOnChange}
           />
           <Slider
-            label="Estimate the number of ICU patients:"
+            label="Number of ICU patients:"
             min={0}
-            max={10000}
             step={100}
-            defaultValue={2000}
+            defaultValue={100}
             showValue
             snapToStep
             onChange={icuOnChange}
           />
           <Slider
-            label="Estimate the number of hospitalizations:"
+            label="Number of hospitalizations:"
             min={0}
-            max={20000}
-            step={100}
-            defaultValue={2000}
+            max={200000}
+            step={1000}
+            defaultValue={1000}
             showValue
             snapToStep
             onChange={hospOnChange}
           />
           <Slider
-            label="Estimate the number of ICU patients:"
+            label="Number of ICU patients:"
             min={0}
             max={10000}
             step={100}
@@ -189,61 +188,61 @@ export const InputForm = () => {
             onChange={testperOnChange}
           />
           <Slider
-            label="Estimate the total number of vaccines delivered:"
+            label="Total number of vaccines delivered:"
             min={0}
-            max={5000000000}
+            max={500000000}
             step={100000}
-            defaultValue={40000000}
+            defaultValue={500000}
             showValue
             snapToStep
             onChange={tvacOnChange}
           />
           <Slider
-            label="Estimate the total number of vaccinated individuals:"
+            label="Total number of vaccinated individuals:"
             min={0}
-            max={1000000000}
-            step={10000}
-            defaultValue={40000000}
+            max={250000000}
+            step={100000}
+            defaultValue={200000}
             showValue
             snapToStep
             onChange={totalvacpeopleOnChange}
           />
           <Slider
-            label="Estimate the total number of fully vaccinated people:"
+            label="Total number of fully vaccinated people:"
             min={0}
-            max={1000000000}
-            step={10000}
+            max={200000000}
+            step={100000}
             defaultValue={40000000}
             showValue
             snapToStep
             onChange={fullyvacOnChange}
           />
           <Slider
-            label="Estimate the total number of people who have received the booster dose:"
+            label="Total number of people who have received the booster dose:"
             min={0}
-            max={1000000000}
+            max={10000000}
             step={10000}
-            defaultValue={40000000}
+            defaultValue={30000}
             showValue
             snapToStep
             onChange={boosterOnChange}
           />
           <Slider
-            label="Estimate the total number of new vaccines delivered:"
+            label="Total number of new vaccines delivered:"
             min={0}
-            max={5000000000}
-            step={10000}
-            defaultValue={40000000}
+            max={350000}
+            step={1000}
+            defaultValue={5000}
             showValue
             snapToStep
             onChange={newvacOnChange}
           />
           <Slider
-            label="Estimate the total number of new vaccinated individuals:"
+            label="Total number of new vaccinated individuals:"
             min={0}
-            max={1000000000}
-            step={10000}
-            defaultValue={40000000}
+            max={200000}
+            step={1000}
+            defaultValue={2000}
             showValue
             snapToStep
             onChange={newvacpeopleOnChange}
