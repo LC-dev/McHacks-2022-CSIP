@@ -121,7 +121,7 @@ export const InputForm = () => {
             onChange={(e) => setTitle(e.target.value)}
           /> */}
           <Dropdown
-            placeholder="Select a country"
+            placeholder="Default: Canada"
             label="Select a country"
             options={options}
             styles={dropdownStyles}

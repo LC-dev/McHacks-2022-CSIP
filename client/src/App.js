@@ -34,7 +34,18 @@ function App() {
     getData();
   }, []);
   return (
-    <div className="base center">
+    <div className="center">
+      <div className="wrapper center">
+        <h1>Covid Stringency Index Predictor</h1>
+        <h2>Using AI to predict how strict public health measures should be</h2>
+        <h4>
+          For your chosen country, select the values for the public health
+          performance indices below and get the corresponding policy
+          recommendation based on the predicted Stringency index! This is a
+          novel AI that we have trained ourselves to best equip you to navigate
+          the Covid-19 pandemic.
+        </h4>
+      </div>
       <div
         className="wrapper center"
         style={{ boxShadow: theme.effects.elevation4 }}
@@ -49,9 +60,9 @@ function App() {
           <p>Loading...</p>
         ) : (
           data.output.map((output, i) => (
-            <p className="center text-center" key={i}>
+            <h2 className="center text-center" key={i}>
               {output}
-            </p>
+            </h2>
           ))
         )}
       </div>
