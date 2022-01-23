@@ -279,7 +279,7 @@ export const InputForm = () => {
                 newvacpeople,
               };
               const response = await fetch(
-                "http://mchacks9-csip.herokuapp.com/input",
+                "https://mchacks9-csip.herokuapp.com/input",
                 {
                   method: "POST",
                   headers: {
