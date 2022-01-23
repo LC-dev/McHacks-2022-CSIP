@@ -5,7 +5,6 @@ import pymongo
 from pymongo import MongoClient
 import certifi
 from bson.json_util import dumps, loads
-from bson import json_util
 import pickle
 from io import open
 import numpy as np
@@ -22,8 +21,6 @@ ca = certifi.where()
 client=MongoClient("mongodb+srv://paulhinta:cP3&bG32@cluster0.xov9o.mongodb.net/Queries?retryWrites=true&w=majority", tlsCAFile=ca)
 #At the end we should change this to an environment variable so ppl don't my authentification
 db = client.Queries
-
-#app.config['CORS_HEADERS'] = 'Content-Type'
 
 #test
 query_params = "No live query"
