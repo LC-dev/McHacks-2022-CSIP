@@ -15,7 +15,7 @@ function App() {
 
   const [data, setData] = useState([]);
   const getData = () => {
-    fetch("https://localhost:5000/output", {
+    fetch("/output", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
