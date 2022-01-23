@@ -9,7 +9,6 @@ import pickle
 from io import open
 import os
 import numpy as np
-import math
 
 filename="./finalized_model.sav"
 loaded_model = pickle.load(open(filename, 'rb'))
@@ -28,19 +27,6 @@ db = client.Queries
 query_params = "No live query"
 
 ## import AI Alg
-
-policy = {
-  0: "This country is well off with regards to Covid-19. As long as the government continues to educate the public on proper hygiene, no additional measures need to be taken.",
-  1: "This country is doing relatively well, but some measures should be taken. The government should prioritize supplying protective equipment such as masks to those who are most vulnerable, such as the elderly in retirement homes.",
-  2: "This country should be cautious. Government officials should have contingency plans set in place and be ready to act at any moment that a potential outbreak occurs.",
-  3: "This country should be cautious. A mask mandate should be implemented for all indoor activities. Officials should advise against nonessential in-person activities, such as certain school events and social gatherings.",
-  4: "This country should be cautious. A mask mandate should be implemented for all indoor activities. The government should mandate remote learning where possible, such as high schools and universities. Remote work is encouraged, where possible. Indoor social gatherings should be limited to 10 people.",
-  5: "This country has fallen behind in its COVID response plan. To reduce spread, a mask mandate should be implemented for all indoor activities. Where possible, schools should operate remotely. Remote work is encouraged, where possible. All social gatherings should be restricted to five people.",
-  6: "The public health system of this country is at a relatively high risk of collapsing. A mask mandate should be implemented. Proof of vaccination should be required for non-essential activities. Remote work should be mandated in hotspot regions. Where possible, schools should operate remotely.",
-  7: "The public health system of this country is at a high risk of collapsing. Mask and vaccine mandates should be implemented. Remote work should be mandated in hotspot regions. Schools should operate remotely. Social gatherings with people from different households should be banned.",
-  8: "The public health system of this country is failing. Wearing a mask and providing proof of vaccination should be required everywhere. All school should operate remotely. Non-essential (in-person) businesses should close. A fine should be introduced for those who violate social gathering rules. The government should consider closing certain international borders.",
-  9: "The public health system of this coutnry is failing. Mask and vaccine mandates should be required everywhere. All schools and non-essential businesses should operate remotely; those that can't should be closed, facing possible fines otherwise. International borders should close and domestic travel should be restricted."
-}
 
 populations = {
   "Belgium": 12000000,
@@ -104,15 +90,21 @@ def helloWorld():
 
   #sort through data
   for key in x:
+    print(x[key])
 
     if key=="_id":
       continue
 
+<<<<<<< HEAD
     if key=="title":
       country = str(x[key])
       country = country.split(',')[0]
       country = country.split("'")[3]
       country = country.capitalize()
+=======
+    if x[key]=="title":
+      country = str(x[key]["text"])
+>>>>>>> parent of 740a54fb (Fixed remaining bugs, added instructions)
       continue
     
     #double count
@@ -143,6 +135,8 @@ def helloWorld():
 
   user_input = np.asarray(ret)
 
+  print(user_input)
+
   #normalize data
   for i in range(4):
     user_input[i]=user_input[i]*(10**6)/pop
@@ -159,11 +153,7 @@ def helloWorld():
   #out = data out to FE, must be string!
   si = loaded_model.predict(final_input)[0]
 
-  out = [country, "Index: " + str(round(si,2))]
-
-  policy_rec = policy[int(math.floor(si/10))]
-
-  out.append(policy_rec)
+  out = [country, "Index: " + str(si)]
 
   return {"output": out}
 
@@ -172,6 +162,7 @@ def helloWorld():
 def input():
   x=request.get_json()
   res = db.Example.insert_one(x)
+  print(x)
   return query_params
 
 app.run(port=p, host='0.0.0.0')
