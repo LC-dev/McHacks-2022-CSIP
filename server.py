@@ -1,13 +1,16 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
+import pymongo
 from pymongo import MongoClient
 import certifi
+from bson.json_util import dumps, loads
 
 app = Flask(__name__)
 
 ca = certifi.where()
 
 client=MongoClient("mongodb+srv://paulhinta:cP3&bG32@cluster0.xov9o.mongodb.net/Queries?retryWrites=true&w=majority", tlsCAFile=ca)
+#At the end we should change this to an environment variable so ppl don't my authentification
 db = client.Queries
 
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -42,7 +45,9 @@ print('Python script loaded')
 @cross_origin()
 def helloWorld():
   import random
-  return {"output": ["covid is bad", "masks are good", str(x), str(y), str(z), str(random.randint(4,9000))]}
+  cursor = db.Example.find({}).limit(1).sort([('$natural', pymongo.DESCENDING)])
+  current_query = loads(dumps(cursor))
+  return {"output": [str(current_query),"covid is bad", "masks are good", str(x), str(y), str(z), str(random.randint(4,9000))]}
 
 @app.route("/input", methods=['POST'])
 @cross_origin()
