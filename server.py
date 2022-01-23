@@ -174,5 +174,4 @@ def input():
   res = db.Example.insert_one(x)
   return query_params
 
-if __name__ == "__main__":
-    app.run(port=p, host='0.0.0.0')
+app.run(port=p, host='0.0.0.0')
