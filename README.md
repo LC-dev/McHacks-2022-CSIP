@@ -1,6 +1,6 @@
-# CSIP
+# Covid Stringency Index Predictor (CSIP)
 McHacks 9: Covid Stringency Index Predictor
-
+Date: January 23, 2022
 Authors: Paul Hinta, Lynn Cherif, Alexander Becker, Abdullatif Hassan
 
 ## Description: 
