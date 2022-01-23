@@ -15,7 +15,7 @@ function App() {
 
   const [data, setData] = useState([]);
   const getData = () => {
-    fetch("https://mchacks9-csip.herokuapp.com/output", {
+    fetch("https://localhost:5000/output", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
