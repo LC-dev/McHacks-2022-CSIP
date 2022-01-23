@@ -57,8 +57,8 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 6) npm start
 
 ## Demo
-![image](https://user-images.githubusercontent.com/46327849/150682363-dca6909c-42c0-4b8c-965e-13ff8435c4f1.png)
-![image](https://user-images.githubusercontent.com/46327849/150682578-57a3e570-fb96-40b2-936c-2b114f2c7194.png)
+![image](https://user-images.githubusercontent.com/46327849/150682647-ef7e9937-00dc-421c-9860-9e923e50541b.png)
+![image](https://user-images.githubusercontent.com/46327849/150682654-b590f91e-50d2-42f1-bd7f-41b1072db871.png)
 
 
 ## Future Improvement
