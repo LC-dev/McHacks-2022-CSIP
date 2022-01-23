@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask.helpers import send_from_directory
 from flask_cors import CORS, cross_origin
 import pymongo
 from pymongo import MongoClient
@@ -13,7 +14,8 @@ import math
 filename="./finalized_model.sav"
 loaded_model = pickle.load(open(filename, 'rb'))
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="client/build", static_url_path="")
+CORS(app)
 
 ca = certifi.where()
 
@@ -112,7 +114,6 @@ def helloWorld():
       country = country.split(',')[0]
       country = country.split("'")[3]
       country = country.capitalize()
-      print(country)
       continue
     
     #double count
@@ -130,7 +131,6 @@ def helloWorld():
       continue
     else:
       try:
-        print(x[key], key)
         ret.append(float(x[key]))
       except TypeError:
         continue
@@ -174,6 +174,11 @@ def input():
   x=request.get_json()
   res = db.Example.insert_one(x)
   return query_params
+
+@app.route("/", methods=["GET"])
+@cross_origin()
+def serve():
+  return send_from_directory(app.static_folder, "index.html")
 
 if __name__ == "__main__":
     app.run()
