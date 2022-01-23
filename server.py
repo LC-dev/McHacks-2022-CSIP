@@ -7,12 +7,14 @@ import certifi
 from bson.json_util import dumps, loads
 import pickle
 from io import open
+import os
 import numpy as np
 import math
 
 filename="./finalized_model.sav"
 loaded_model = pickle.load(open(filename, 'rb'))
 
+p = int(os.environ.get("PORT", 5000))
 app = Flask(__name__, static_folder="client/build", static_url_path="")
 CORS(app)
 
@@ -172,10 +174,5 @@ def input():
   res = db.Example.insert_one(x)
   return query_params
 
-@app.route("/", methods=["GET"])
-@cross_origin()
-def serve():
-  return send_from_directory(app.static_folder, "index.html")
-
 if __name__ == "__main__":
-    app.run()
+    app.run(port=p, host='0.0.0.0')
