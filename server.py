@@ -21,7 +21,7 @@ client=MongoClient("mongodb+srv://paulhinta:cP3&bG32@cluster0.xov9o.mongodb.net/
 #At the end we should change this to an environment variable so ppl don't my authentification
 db = client.Queries
 
-app.config['CORS_HEADERS'] = 'Content-Type'
+#app.config['CORS_HEADERS'] = 'Content-Type'
 
 #test
 query_params = "No live query"
