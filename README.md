@@ -55,6 +55,10 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 4) Open localhost:3000 on chrome
 5) On a different command window, cd into root/client
 6) npm start
+
+## Demo
+![image](https://user-images.githubusercontent.com/46327849/150682363-dca6909c-42c0-4b8c-965e-13ff8435c4f1.png)
+
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
 
