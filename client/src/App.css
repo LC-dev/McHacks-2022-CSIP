@@ -1,73 +1,86 @@
-import React, { useState, useEffect } from "react";
-import { Deploy } from "./Component/Deploy/Deploy";
-import { InputForm } from "./Component/InputForm";
-
-import "./App.css";
-
-import { cssColor, getTheme } from "@fluentui/react";
-
-const theme = getTheme();
-
-function App() {
-  useEffect(() => {
-    document.title = "Covid stringency index predictor";
-  }, []);
-
-  const [data, setData] = useState([]);
-  const getData = () => {
-    fetch("http://localhost:5000/output", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
-    })
-      .then(function (response) {
-        console.log(response);
-        return response.json();
-      })
-      .then(function (myJson) {
-        console.log(myJson);
-        setData(myJson);
-      });
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  return (
-    <div className="center">
-      <div className="wrapper center">
-        <h1>Covid Stringency Index Predictor</h1>
-        <h2>Using AI to predict how strict public health measures should be</h2>
-        <h4>
-          For your chosen country, select the values for the public health
-          performance indices below and get the corresponding policy
-          recommendation based on the predicted Stringency index! This is a
-          novel AI that we have trained ourselves to best equip you to navigate
-          the Covid-19 pandemic.
-        </h4>
-      </div>
-      <div
-        className="wrapper center"
-        style={{ boxShadow: theme.effects.elevation4 }}
-      >
-        <InputForm>Input</InputForm>
-      </div>
-      <div
-        className="wrapper center"
-        style={{ boxShadow: theme.effects.elevation4 }}
-      >
-        {typeof data.output === "undefined" ? (
-          <p>Loading...</p>
-        ) : (
-          data.output.map((output, i) => (
-            <h2 className="center text-center" key={i}>
-              {output}
-            </h2>
-          ))
-        )}
-      </div>
-    </div>
-  );
+.App {
+  text-align: center;
 }
 
-export default App;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wrapper {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(10px, auto);
+}
+
+.base {
+  display: grid;
+  gap: 10px;
+  grid-auto-rows: minmax(10px, auto);
+  background-color: dodgerblue;
+}
+
+.one {
+  grid-column: 1 / 3;
+  grid-row: 1;
+}
+.two {
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+}
+.three {
+  grid-column: 1;
+  grid-row: 2 / 5;
+}
+.four {
+  grid-column: 3;
+  grid-row: 3;
+}
+.five {
+  grid-column: 2;
+  grid-row: 4;
+}
+.six {
+  grid-column: 3;
+  grid-row: 4;
+}
+
+.center {
+  margin: auto;
+  width: 75%;
+  padding: 10px;
+}
+
+.text-center {
+  text-align: center;
+}
