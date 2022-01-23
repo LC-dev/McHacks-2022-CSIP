@@ -27,11 +27,12 @@ The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each r
 | total_boosters | Cumulative Number of Booster Shots Adminstered|
 | new_vaccinations_smoothed | Daily number of doses adminstered (7-day smoothed)|
 | new_people_vaccinated_smoothed | Daily number of new people vaccinated (7-day smoothed)|
+| population | Total Population of the Country. The user selects the country name in the UI and the country name is then mapped to its corressponding population|
 
 ### The Stringency Index
 The Stringency Index is a numerical measure for the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
 ### Data Preprocessing
-
+The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
 
 ## Demo
@@ -40,5 +41,6 @@ The Stringency Index is a numerical measure for the severity of COVID-19-related
 
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
+
 Including rapid test data once it becomes available
 
