@@ -58,6 +58,8 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 
 ## Demo
 ![image](https://user-images.githubusercontent.com/46327849/150682363-dca6909c-42c0-4b8c-965e-13ff8435c4f1.png)
+![image](https://user-images.githubusercontent.com/46327849/150682578-57a3e570-fb96-40b2-936c-2b114f2c7194.png)
+
 
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
