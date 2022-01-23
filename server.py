@@ -108,7 +108,7 @@ def helloWorld():
         ret.append(float(x[key]))
       continue
     
-    if x[key] == "":
+    if x[key]=="":
       ret.append(float(exceptions[key]))
       continue
     else:
