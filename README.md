@@ -58,5 +58,5 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
 
-Including rapid test data once it becomes available
+Including rapid test data once it becomes available.
 
