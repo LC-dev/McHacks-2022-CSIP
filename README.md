@@ -36,10 +36,12 @@ The Stringency Index is a numerical value to measure the the severity of COVID-1
 ### Data Preprocessing
 The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
-A random-forest decision tree model was adopted. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels. Work related to the training of such model can be found in the DecisionTree_RandomForest.ipynb notebook.
+A random-forest decision tree model was adopted via sklearn. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels. Work related to the training of such model can be found in the DecisionTree_RandomForest.ipynb notebook.
 
 Using a regressor Multilayer Perceptron (MLP) was also tested but yielded less correlation values compared to random-forest decision trees. 
-## Demo
+
+## Full-Stack Application
+The App consists of a React-based frontend and a Mongo-based backend. The ML model is first trained on a Jupyter Notebook Google Colab and then pickled into a .tav file. The frontend application allows the user to select different parameters related to covid health statistics for a certain country out of the list of 24 countries. The user selection is then moved to the backend, which uploads the saved ML model and uses it to generate a prediction on the stringency index given the selected parameters.
 
 ## Download and Use
 
