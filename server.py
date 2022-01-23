@@ -1,9 +1,11 @@
+from re import T
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import pymongo
 from pymongo import MongoClient
 import certifi
 from bson.json_util import dumps, loads
+from bson import json_util
 
 app = Flask(__name__)
 
@@ -18,36 +20,31 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 #test
 query_params = "No live query"
 
-def dummy_alg():
-  import math
+## import AI Alg
 
-  x,y,z=0,0,0
 
-  while True:
-      x+=1
-      y+=2
-      z+=math.sqrt(1/(x+y^2))
-      if x==5:
-          break
-  
-  print("Dummy algorithm completed")
-  print(query_params)
-  
-  return (x,y,z)
 
-t = dummy_alg()
 
-x,y,z = t[0],t[1],t[2]
-
-print('Python script loaded')
+def get_data(data):
+     data['_id'] = str(data['_id'])
+     return data
 
 @app.route("/output")
 @cross_origin()
 def helloWorld():
   import random
   cursor = db.Example.find({}).limit(1).sort([('$natural', pymongo.DESCENDING)])
-  current_query = loads(dumps(cursor))
-  return {"output": [str(current_query),"covid is bad", "masks are good", str(x), str(y), str(z), str(random.randint(4,9000))]}
+  #current_query = dumps(cursor, default=json_util.default)
+  x = {}
+  for i in cursor:
+    x=get_data(i)
+    break
+
+  ret = []
+  for key in x:
+    ret.append(str(x[key]))
+
+  return {"output": ret}
 
 @app.route("/input", methods=['POST'])
 @cross_origin()
