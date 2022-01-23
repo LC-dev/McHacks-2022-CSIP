@@ -7,6 +7,11 @@ import {
 import { DefaultButton } from "@fluentui/react/lib/Button";
 import { TextField, MaskedTextField } from "@fluentui/react/lib/TextField";
 import { Stack, IStackProps, IStackStyles } from "@fluentui/react/lib/Stack";
+import { getTheme } from "@fluentui/react";
+
+import "../App.css";
+
+const theme = getTheme();
 
 const stackTokens = { childrenGap: 50 };
 const iconProps = { iconName: "Calendar" };
@@ -20,8 +25,7 @@ export const InputForm = () => {
   const [title, setTitle] = useState("");
 
   return (
-    <div>
-      <DefaultButton>Button</DefaultButton>
+    <div class="center">
       <Stack horizontal tokens={stackTokens} styles={stackStyles}>
         <Stack {...columnProps}>
           <TextField
@@ -30,8 +34,6 @@ export const InputForm = () => {
             required
             onChange={(e) => setTitle(e.target.value)}
           />
-        </Stack>
-        <Stack {...columnProps}>
           <DefaultButton
             onClick={async () => {
               const query = { title };

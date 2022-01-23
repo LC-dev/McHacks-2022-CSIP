@@ -2,6 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Deploy } from "./Component/Deploy/Deploy";
 import { InputForm } from "./Component/InputForm";
 
+import "./App.css";
+
+import { cssColor, getTheme } from "@fluentui/react";
+
+const theme = getTheme();
+
 function App() {
   useEffect(() => {
     document.title = "Covid stringency index predictor";
@@ -28,14 +34,27 @@ function App() {
     getData();
   }, []);
   return (
-    <div>
-      {typeof data.output === "undefined" ? (
-        <p>Loading...</p>
-      ) : (
-        data.output.map((output, i) => <p key={i}>{output}</p>)
-      )}
-      <Deploy />
-      <InputForm></InputForm>
+    <div className="base center">
+      <div
+        className="wrapper center"
+        style={{ boxShadow: theme.effects.elevation4 }}
+      >
+        <InputForm>Input</InputForm>
+      </div>
+      <div
+        className="wrapper center"
+        style={{ boxShadow: theme.effects.elevation4 }}
+      >
+        {typeof data.output === "undefined" ? (
+          <p>Loading...</p>
+        ) : (
+          data.output.map((output, i) => (
+            <p className="center text-center" key={i}>
+              {output}
+            </p>
+          ))
+        )}
+      </div>
     </div>
   );
 }
