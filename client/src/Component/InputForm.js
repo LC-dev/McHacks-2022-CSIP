@@ -210,7 +210,7 @@ export const InputForm = () => {
           <Slider
             label="Total number of fully vaccinated people:"
             min={0}
-            max={200000000}
+            max={400000}
             step={100000}
             defaultValue={40000000}
             showValue
