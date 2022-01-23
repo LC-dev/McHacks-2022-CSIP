@@ -10,7 +10,7 @@ Balancing between public health  and normal life is a challenge policymakers hav
 Using ML and COVID-19 publicly available data for countries around the world, we are able to recommend a policy with up to 0.95 R-squared correlation through our interactive web app.
 
 ## Dataset Used
-The dataset was taken from the github repository of "Our World in Data" on January 22nd, 2022: [https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables]
+The dataset was taken from the github repository of "Our World in Data" on January 22nd, 2022: [https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables].
 The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each row representing the datapoint of a certain day in a certain country from a list of 24 countries. The total number of datapoints is 14135.
 ### ML Model Input Features
 | Feature  | Description |
@@ -32,12 +32,16 @@ The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each r
 | population | Total Population of the Country. The user selects the country name in the UI and the country name is then mapped to its corressponding population|
 
 ### The Stringency Index
-The Stringency Index is a numerical measure for the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
+The Stringency Index is a numerical value to measure the the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
 ### Data Preprocessing
 The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
-A random-forest decision tree model was adopted.....
-## Demo
+A random-forest decision tree model was adopted via sklearn. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels. Work related to the training of such model can be found in the DecisionTree_RandomForest.ipynb notebook.
+
+Using a regressor Multilayer Perceptron (MLP) was also tested but yielded less correlation values compared to random-forest decision trees. 
+
+## Full-Stack Application
+The App consists of a React-based frontend and a Mongo-based backend. The ML model is first trained on a Jupyter Notebook Google Colab and then pickled into a .tav file. The frontend application allows the user to select different parameters related to covid health statistics for a certain country out of the list of 24 countries. The user selection is then moved to the backend, which uploads the saved ML model and uses it to generate a prediction on the stringency index given the selected parameters.
 
 ## Download and Use
 
