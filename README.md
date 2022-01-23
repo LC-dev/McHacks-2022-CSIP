@@ -33,17 +33,23 @@ The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each r
 
 ### The Stringency Index
 The Stringency Index is a numerical value to measure the the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
+
+For more information, see https://www.bankofcanada.ca/2021/02/staff-analytical-note-2021-1/
+
 ### Data Preprocessing
-The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
+Feature selection and data cleaning (e.g. removal/filling of empty cells) was done on the downloaded data. Once loaded into the dataframe, the data is then shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
-A random-forest decision tree model was adopted via sklearn. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels. Work related to the training of such model can be found in the DecisionTree_RandomForest.ipynb notebook.
-
-Using a regressor Multilayer Perceptron (MLP) was also tested but yielded less correlation values compared to random-forest decision trees. 
-
-## Full-Stack Application
-The App consists of a React-based frontend and a Mongo-based backend. The ML model is first trained on a Jupyter Notebook Google Colab and then pickled into a .tav file. The frontend application allows the user to select different parameters related to covid health statistics for a certain country out of the list of 24 countries. The user selection is then moved to the backend, which uploads the saved ML model and uses it to generate a prediction on the stringency index given the selected parameters.
+After experimenting with Decision Trees and ANNs, a Random Forest(RF) decision tree model was adopted. Using 5-fold cross-validation and hyperparameter tuning, the best performing RF contained 200 estimators (trees) with a depth of 28, giving an R-squared test score of up to 95%. 
+A regressor Multilayer Perceptron (MLP) yielded less correlation values compared to random-forest decision trees. 
+Work related to model experiments can be found in the DecisionTree_RandomForest.ipynb and ANN.ipynb notebooks.
+## Demo
 
 ## Download and Use
+#### ML models
+1) Download the chosen notebook from the 'model' folder 
+2) Download the 'McHacks_ALLcovid.csv' file from the 'data' folder and update the path of the file in the chosen notebook where necessary
+3) Change the desired value range of hyperparameters and run the notebook
+#### Web app
 
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
