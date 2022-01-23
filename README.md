@@ -10,7 +10,7 @@ Balancing between public health  and normal life is a challenge policymakers hav
 Using ML and COVID-19 publicly available data for countries around the world, we are able to recommend a policy with up to 0.95 R-squared correlation through our interactive web app.
 
 ## Dataset Used
-The dataset was taken from the github repository of "Our World in Data" on January 22nd, 2022: [https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables]
+The dataset was taken from the github repository of "Our World in Data" on January 22nd, 2022: [https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/organizing-information-with-tables].
 The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each row representing the datapoint of a certain day in a certain country from a list of 24 countries. The total number of datapoints is 14135.
 ### ML Model Input Features
 | Feature  | Description |
@@ -32,7 +32,7 @@ The data was then cleaned and saved in the Mchacks_ALLcovid.csv file with each r
 | population | Total Population of the Country. The user selects the country name in the UI and the country name is then mapped to its corressponding population|
 
 ### The Stringency Index
-The Stringency Index is a numerical measure for the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
+The Stringency Index is a numerical value to measure the the severity of COVID-19-related restrictions put in place in a certain country. This could include school closures, workplace closures, and travel bans. The Stringency Index is scaled from 0 to 100 with 100 being the most aggressive restrictions.  
 ### Data Preprocessing
 The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
