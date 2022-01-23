@@ -121,7 +121,7 @@ export const InputForm = () => {
             onChange={(e) => setTitle(e.target.value)}
           /> */}
           <Dropdown
-            placeholder="Select a country"
+            placeholder="Default: Canada"
             label="Select a country"
             options={options}
             styles={dropdownStyles}
@@ -278,13 +278,16 @@ export const InputForm = () => {
                 newvac,
                 newvacpeople,
               };
-              const response = await fetch("http://localhost:5000/input", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(query),
-              });
+              const response = await fetch(
+                "http://mchacks9-csip.herokuapp.com/input",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                  body: JSON.stringify(query),
+                }
+              );
 
               console.log(query.title);
 

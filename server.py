@@ -9,6 +9,7 @@ import pickle
 from io import open
 import numpy as np
 import math
+import os
 
 filename="./finalized_model.sav"
 loaded_model = pickle.load(open(filename, 'rb'))
@@ -176,4 +177,5 @@ def input():
   return query_params
 
 if __name__ == "__main__":
-    app.run()
+    p = str(os.environ.get("PORT", 5000))
+    app.run('0.0.0.0', debug=False, port=p)
