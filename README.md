@@ -34,7 +34,7 @@ The Stringency Index is a numerical measure for the severity of COVID-19-related
 ### Data Preprocessing
 The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
-
+A random-forest decision tree model was adopted.....
 ## Demo
 
 ## Download and Use
