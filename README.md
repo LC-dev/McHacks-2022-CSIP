@@ -36,7 +36,9 @@ The Stringency Index is a numerical measure for the severity of COVID-19-related
 ### Data Preprocessing
 The initial data table is first shuffled and the features are separated from the Stringency Index Output Values. All features related to an absolute number of individuals or tests, or vaccines is normalized through dividing by the population of the country. 
 ## ML Model
-A random-forest decision tree model was adopted. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels.
+A random-forest decision tree model was adopted. Using 5-fold cross-validation, it was determined that such decision tree would consist of 200 estimators (trees) with a depth of 28. Using those parameters, the algorithm was able to generate predictions on the test data that had an R-Squared correlation of 0.951 with the actual test data labels. Work related to the training of such model can be found in the DecisionTree_RandomForest.ipynb notebook.
+
+Using a regressor Multilayer Perceptron (MLP) was also tested but yielded less correlation values compared to random-forest decision trees. 
 ## Demo
 
 ## Download and Use
