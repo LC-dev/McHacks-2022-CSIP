@@ -50,7 +50,12 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 2) Download the 'McHacks_ALLcovid.csv' file from the 'data' folder and update the path of the file in the chosen notebook where necessary
 3) Change the desired value range of hyperparameters and run the notebook
 #### Web app
-
+1) cd into root
+2) ./venv\Scripts\activate
+3) python server.py
+4) Open localhost:3000 on chrome
+5) On a different command window, cd into root/client
+6) npm start
 ## Future Improvement
 More comprehensive preprocessing and feature extraction can be done. Further metrics can be extracted from the existing set of features to yield more expressive features. An example of this can be correlating hospitalization numbers with daily cases that take place 2 weeks earlier. 
 
