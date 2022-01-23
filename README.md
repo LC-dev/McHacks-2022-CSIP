@@ -42,7 +42,6 @@ Feature selection and data cleaning (e.g. removal/filling of empty cells) was do
 After experimenting with Decision Trees and ANNs, a Random Forest(RF) decision tree model was adopted. Using 5-fold cross-validation and hyperparameter tuning, the best performing RF contained 200 estimators (trees) with a depth of 28, giving an R-squared test score of up to 95%. 
 A regressor Multilayer Perceptron (MLP) yielded less correlation values compared to random-forest decision trees. 
 Work related to model experiments can be found in the DecisionTree_RandomForest.ipynb and ANN.ipynb notebooks.
-## Demo
 
 ## Download and Use
 #### ML models
