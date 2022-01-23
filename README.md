@@ -1,2 +1,2 @@
 # csip
-McHacks 9: Covid policy recommendation engine
+McHacks 9: Covid Stringency Index Predictor
