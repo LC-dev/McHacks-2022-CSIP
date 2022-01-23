@@ -1,4 +1,3 @@
-from re import T
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 import pymongo
@@ -6,6 +5,12 @@ from pymongo import MongoClient
 import certifi
 from bson.json_util import dumps, loads
 from bson import json_util
+import pickle
+from io import open
+import numpy as np
+
+filename="./finalized_model.sav"
+loaded_model = pickle.load(open(filename, 'rb'))
 
 app = Flask(__name__)
 
@@ -21,6 +26,31 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 query_params = "No live query"
 
 ## import AI Alg
+
+populations = {
+  "Belgium": 12000000,
+  "Bulgaria": 6896655,
+  "Cyprus": 896005,
+  "Czhechia": 11000000,
+  "Denmark": 5813302,
+  "Estonia": 1325188,
+  "Finland": 5548361,
+  "Ireland": 4982904,
+  "Italy": 60000000,
+  "Luxembourg": 634814,
+  "Malta": 516100,
+  "Netherlands": 17000000,
+  "Portugal": 10000000,
+  "Serbia": 6871547,
+  "Slovakia": 5549270,
+  "Spain": 47000000,
+  "Switzerland": 8715494,
+  "United Kingdom": 68000000,
+  "Australia": 26000000,
+  "New Zealand": 5126300,
+  "Canada": 38000000,
+  "United States": 330000000
+}
 
 def get_data(data):
      data['_id'] = str(data['_id'])
@@ -41,41 +71,80 @@ def helloWorld():
   country = ""
   si = 0
 
+  exceptions = {
+    "cases": 5000,
+    "deaths": 48,
+    "reproduction": 0.76,
+    "icu": 1283,
+    "hosp": 3500,
+    "positive": 0.05,
+    "testper": 20,
+    "tvac": 20000000,
+    "totalvacpeople": 18000000,
+    "fullyvac": 1500000,
+    "booster": 170,
+    "newvac": 365000,
+    "newvacpeople": 340000
+  }
+
   #sort through data
   for key in x:
-    print(key)
     print(x[key])
+
     if key=="_id":
       continue
-    if key=="title":
+
+    if x[key]=="title":
       country = str(x[key]["text"])
       continue
-    if key=="new cases":
+    
+    #double count
+    if key == "cases" or key == "deaths":
+      if x[key]==0 or x[key]=="":
+        ret.append(float(exceptions[key]))
+        ret.append(float(exceptions[key]))
+      else:
+        ret.append(float(x[key]))
+        ret.append(float(x[key]))
+      continue
+    
+    if x[key] == "":
+      ret.append(float(exceptions[key]))
+      continue
+    else:
       try:
         ret.append(float(x[key]))
-        ret.append(float(x[key]))
-      except ValueError:
-        ret.append(5)             #this should be fetch table
+      except TypeError:
+        continue
       continue
-    if key=="deaths":
-      try:
-        ret.append(float(x[key]))
-        ret.append(float(x[key]))
-      except ValueError:
-        ret.append(5)
-      continue
-    try:
-      ret.append(float(x[key]))
-    except ValueError:
-      ret.append(5)
+
+  try:
+    pop = populations[country]
+  except KeyError:
+    pop = populations["Canada"]
+    country = "Canada"
+
+  user_input = np.asarray(ret)
+
+  print(user_input)
+
+  #normalize data
+  for i in range(4):
+    user_input[i]=user_input[i]*(10**6)/pop
+
+  for i in [5, 6]:
+    user_input[i]=user_input[i]*(10**6)/pop
+
+  for i in range(9,14):
+    user_input[i]=user_input[i]*(10**6)/pop
+
+  final_input=user_input[np.newaxis,:]
   
   #ret = data into algorithm, must be int/float
   #out = data out to FE, must be string!
-  out = [country, "Index: " + str(si)]
+  si = loaded_model.predict(final_input)[0]
 
-  for i in ret:
-    print(i)
-    out.append(str(i))
+  out = [country, "Index: " + str(si)]
 
   return {"output": out}
 

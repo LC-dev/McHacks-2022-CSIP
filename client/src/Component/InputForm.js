@@ -25,9 +25,30 @@ const dropdownStyles: Partial<IDropdownStyles> = {
 };
 
 const options: IDropdownOption[] = [
+  { key: "belgium", text: "Belgium" },
+  { key: "bulgaria", text: "Bulgaria" },
+  { key: "cyprus", text: "Cyprus" },
+  { key: "czechia", text: "Czechia" },
+  { key: "denmark", text: "Denmark" },
+  { key: "estonia", text: "Estonia" },
+  { key: "finland", text: "Finland" },
+  { key: "france", text: "France" },
+  { key: "ireland", text: "Ireland" },
+  { key: "italy", text: "Italy" },
+  { key: "luxembourg", text: "Luxembourg" },
+  { key: "malta", text: "Malta" },
+  { key: "netherlands", text: "Netherlands" },
+  { key: "portugal", text: "Portugal" },
+  { key: "serbia", text: "Serbia" },
+  { key: "slovakia", text: "Slovakia" },
+  { key: "slovenia", text: "Slovenia" },
+  { key: "spain", text: "Spain" },
+  { key: "switzerland", text: "Switzerland" },
+  { key: "unitedkingdom", text: "United Kingdom" },
+  { key: "australia", text: "Autralia" },
+  { key: "newzealand", text: "New Zealand" },
   { key: "canada", text: "Canada" },
-  { key: "germany", text: "Germany" },
-  { key: "India", text: "India" },
+  { key: "unitedstates", text: "United States" },
 ];
 
 const narrowTextFieldStyles: Partial<ITextFieldStyles> = {
@@ -151,8 +172,9 @@ export const InputForm = () => {
           <Slider
             label="Number of ICU patients:"
             min={0}
+            max={30000}
             step={100}
-            defaultValue={100}
+            defaultValue={200}
             showValue
             snapToStep
             onChange={icuOnChange}
@@ -166,16 +188,6 @@ export const InputForm = () => {
             showValue
             snapToStep
             onChange={hospOnChange}
-          />
-          <Slider
-            label="Number of ICU patients:"
-            min={0}
-            max={10000}
-            step={100}
-            defaultValue={2000}
-            showValue
-            snapToStep
-            onChange={icuOnChange}
           />
           <Slider
             label="How many people are being tested per confirmed case?"
@@ -255,9 +267,9 @@ export const InputForm = () => {
                 cases,
                 deaths,
                 reproduction,
-                positive,
                 icu,
                 hosp,
+                positive,
                 testper,
                 tvac,
                 totalvacpeople,

@@ -47,6 +47,7 @@
   display: grid;
   gap: 10px;
   grid-auto-rows: minmax(10px, auto);
+  background-color: dodgerblue;
 }
 
 .one {
