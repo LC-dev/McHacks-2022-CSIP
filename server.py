@@ -95,21 +95,15 @@ def helloWorld():
     if key=="_id":
       continue
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     if key=="title":
       country = str(x[key])
       country = country.split(',')[0]
       country = country.split("'")[3]
       country = country.capitalize()
-=======
     if x[key]=="title":
       country = str(x[key]["text"])
->>>>>>> parent of 740a54fb (Fixed remaining bugs, added instructions)
-=======
     if x[key]=="title":
       country = str(x[key]["text"])
->>>>>>> parent of 740a54fb (Fixed remaining bugs, added instructions)
       continue
     
     #double count
