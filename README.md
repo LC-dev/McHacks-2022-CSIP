@@ -1,4 +1,4 @@
-# Covid Stringency Index Predictor (CSIP)
+# COVID-19 Stringency Index Predictor (CSIP)
 McHacks 9: Covid Stringency Index Predictor
 
 Date: January 23, 2022
