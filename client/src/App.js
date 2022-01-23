@@ -9,7 +9,7 @@ const theme = getTheme();
 
 function App() {
   useEffect(() => {
-    document.title = "Covid stringency index predictor";
+    document.title = "COVID-19 stringency index predictor";
   }, []);
 
   const [data, setData] = useState([]);
@@ -35,14 +35,14 @@ function App() {
   return (
     <div className="center">
       <div className="wrapper center">
-        <h1>Covid Stringency Index Predictor</h1>
+        <h1>COVID-19 Stringency Index Predictor</h1>
         <h2>Using AI to predict how strict public health measures should be</h2>
         <h4>
           For your chosen country, select the values for the public health
           performance indices below and get the corresponding policy
           recommendation based on the predicted Stringency index! This is a
-          novel AI that we have trained ourselves to best equip you to navigate
-          the Covid-19 pandemic.
+          novel AI that recommends the level of public health restrictions,
+          making policymaking easier and more reliable.
         </h4>
       </div>
       <div
