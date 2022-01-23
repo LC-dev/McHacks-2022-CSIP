@@ -22,9 +22,6 @@ query_params = "No live query"
 
 ## import AI Alg
 
-
-
-
 def get_data(data):
      data['_id'] = str(data['_id'])
      return data
@@ -41,10 +38,46 @@ def helloWorld():
     break
 
   ret = []
-  for key in x:
-    ret.append(str(x[key]))
+  country = ""
+  si = 0
 
-  return {"output": ret}
+  #sort through data
+  for key in x:
+    print(key)
+    print(x[key])
+    if key=="_id":
+      continue
+    if key=="title":
+      country = str(x[key]["text"])
+      continue
+    if key=="new cases":
+      try:
+        ret.append(float(x[key]))
+        ret.append(float(x[key]))
+      except ValueError:
+        ret.append(5)             #this should be fetch table
+      continue
+    if key=="deaths":
+      try:
+        ret.append(float(x[key]))
+        ret.append(float(x[key]))
+      except ValueError:
+        ret.append(5)
+      continue
+    try:
+      ret.append(float(x[key]))
+    except ValueError:
+      ret.append(5)
+  
+  #ret = data into algorithm, must be int/float
+  #out = data out to FE, must be string!
+  out = [country, "Index: " + str(si)]
+
+  for i in ret:
+    print(i)
+    out.append(str(i))
+
+  return {"output": out}
 
 @app.route("/input", methods=['POST'])
 @cross_origin()
