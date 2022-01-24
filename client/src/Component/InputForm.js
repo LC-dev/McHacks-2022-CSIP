@@ -25,6 +25,8 @@ const dropdownStyles: Partial<IDropdownStyles> = {
 };
 
 const options: IDropdownOption[] = [
+  { key: "canada", text: "Canada" },
+  { key: "unitedstates", text: "United States" },
   { key: "belgium", text: "Belgium" },
   { key: "bulgaria", text: "Bulgaria" },
   { key: "cyprus", text: "Cyprus" },
@@ -47,8 +49,6 @@ const options: IDropdownOption[] = [
   { key: "unitedkingdom", text: "United Kingdom" },
   { key: "australia", text: "Autralia" },
   { key: "newzealand", text: "New Zealand" },
-  { key: "canada", text: "Canada" },
-  { key: "unitedstates", text: "United States" },
 ];
 
 const narrowTextFieldStyles: Partial<ITextFieldStyles> = {
