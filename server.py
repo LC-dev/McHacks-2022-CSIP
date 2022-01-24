@@ -109,11 +109,13 @@ def helloWorld():
       continue
 
     if key=="title":
-      country = str(x[key])
-      country = country.split(',')[0]
-      country = country.split("'")[3]
-      country = country.capitalize()
-      print(country)
+      try:
+        country = str(x[key])
+        country = country.split(',')[0]
+        country = country.split("'")[3]
+        country = country.capitalize()
+      except IndexError:
+        coutnry="Canada"
       continue
     
     #double count
@@ -131,7 +133,6 @@ def helloWorld():
       continue
     else:
       try:
-        print(x[key], key)
         ret.append(float(x[key]))
       except TypeError:
         continue
