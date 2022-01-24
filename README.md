@@ -49,12 +49,14 @@ Work related to model experiments can be found in the DecisionTree_RandomForest.
 2) Download the 'McHacks_ALLcovid.csv' file from the 'data' folder and update the path of the file in the chosen notebook where necessary
 3) Change the desired value range of hyperparameters and run the notebook
 #### Web app
+Windows:
 1) cd into root
 2) ./venv\Scripts\activate
 3) python server.py
 4) Open localhost:3000 on chrome
 5) On a different command window, cd into root/client
-6) npm start
+6) npm -i (see https://stackoverflow.com/questions/50701496/why-can-not-i-upload-the-node-modules-file-into-github-repository)
+7) npm start
 
 ## Demo
 ![image](https://user-images.githubusercontent.com/46327849/150682647-ef7e9937-00dc-421c-9860-9e923e50541b.png)
