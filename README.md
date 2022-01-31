@@ -43,6 +43,19 @@ After experimenting with Decision Trees and ANNs, a Random Forest(RF) decision t
 A regressor Multilayer Perceptron (MLP) yielded less correlation values compared to random-forest decision trees. 
 Work related to model experiments can be found in the DecisionTree_RandomForest.ipynb and ANN.ipynb notebooks.
 
+## Tools
+* Python
+* Scikit-learn
+* Pandas
+* NumPy
+* Pickle
+* Matplotlib
+* Flask
+* PyMongo
+* MongoDB
+* Heroku
+* React
+
 ## Download and Use
 #### ML models
 1) Download the chosen notebook from the 'model' folder 
